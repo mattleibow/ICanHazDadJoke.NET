@@ -12,6 +12,9 @@ namespace ICanHazDadJoke.NET
 	/// </summary>
 	public class DadJokeApi
 	{
+		/// <summary>
+		/// The URL of the service (https://icanhazdadjoke.com/).
+		/// </summary>
 		public const string BaseUrl = "https://icanhazdadjoke.com/";
 
 		private const string NoUserAgentMessage =

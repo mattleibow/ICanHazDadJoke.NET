@@ -2,7 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
     <DocumentationFile>bin\$(Configuration)\ICanHazDadJoke.NET.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>

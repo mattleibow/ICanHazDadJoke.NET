@@ -1,0 +1,12 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+
+build:
+  project: source/source.sln
+  verbosity: normal
+
+artifacts:
+- path: source/ICanHazDadJoke.NET/bin/$(configuration)/ICanHazDadJoke.NET.dll
+  name: ICanHazDadJoke.NET.dll

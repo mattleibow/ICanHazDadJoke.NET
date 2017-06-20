@@ -1,19 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <WarningsNotAsErrors></WarningsNotAsErrors>
-    <OutputPath></OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <NoWarn></NoWarn>
-    <DebugType></DebugType>
-    <OutputPath></OutputPath>
-    <DocumentationFile>bin\Release\netstandard1.1\ICanHazDadJoke.NET.xml</DocumentationFile>
-    <AllowUnsafeBlocks></AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+    <DocumentationFile>bin\$(Configuration)\ICanHazDadJoke.NET.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />

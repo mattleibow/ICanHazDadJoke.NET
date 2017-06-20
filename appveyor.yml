@@ -3,6 +3,9 @@ image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
 
+before_build:
+ - cmd: nuget restore source/source.sln
+
 build:
   project: source/source.sln
   verbosity: normal

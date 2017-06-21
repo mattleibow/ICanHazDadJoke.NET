@@ -28,7 +28,6 @@ Now, we can start talking to the service using the `DadJokeClient`.
 Before we start using the client, we will need 2 pieces of information:
 
 1. The name of the library or website that is accessing the API
-
 2. A URL/e-email where someone can be contacted regarding the library/website
 
 These two pieces of information are used to create a “User Agent”, or special header that lets the service know who our app is. *(More information can be found on the service website: <https://icanhazdadjoke.com/api#custom-user-agent>)*
@@ -69,9 +68,7 @@ Boom! A massive chunk of dad jokes that you can share will the rest of the folks
 If you looked carefully at the `SearchJokesStringsAsync` method, you would notice that it actually takes a few parameters… What could they be? Well, we can easily find out:
 
 * `term` - we can use this to do some searching… we might be looking for food jokes.
-
 * `page` - this is for when there are so many jokes that we have to use pagination just to read them
-
 * `limit` - this is the special option to control how many jokes we get at once… we don’t want to suffer from an dad joke overload
 
 Let’s look a possible scenario. It is the wife’s birthday and she hates dad jokes. So why not crack a few just for her on this special day? When you get home from work, you see she is making the diner *(as she always does because of her big heart)*. You decide to help out by sharing some cool dad jokes. You decide that you need to do about 5 jokes - not too many that she gets upset, but not too few that she doesn’t get over her initial annoyance and start to laugh.

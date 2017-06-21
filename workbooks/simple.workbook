@@ -1,0 +1,137 @@
+---
+packages:
+- id: ICanHazDadJoke.NET
+  version: 1.0.0
+uti: com.xamarin.workbook
+id: eb346ad1-4b3e-438c-9689-cb5f41ec6d4e
+title: simple
+platforms:
+- Console
+---
+
+# ICanHazDadJoke.NET
+
+ICanHazDadJoke.NET is a .NET Client for [icanhazdadjoke.com](https://icanhazdadjoke.com/), the internet's largest selection of dad jokes.
+
+In this simple workbook, we will go through some of the API features that you can use in your own app.
+
+## Getting Started
+
+The first thing that we need to do is install the “CanHazDadJoke.NET” NuGet package. Once installed, we can add the following `using` statement to our source file:
+
+```csharp
+using ICanHazDadJoke.NET;
+```
+
+Now, we can start talking to the service using the `DadJokeClient`.
+
+Before we start using the client, we will need 2 pieces of information:
+
+1. The name of the library or website that is accessing the API
+
+2. A URL/e-email where someone can be contacted regarding the library/website
+
+These two pieces of information are used to create a “User Agent”, or special header that lets the service know who our app is. *(More information can be found on the service website: <https://icanhazdadjoke.com/api#custom-user-agent>)*
+
+So, to do this we just create two string variables:
+
+```csharp
+var libraryName = "ICanHazDadJoke.NET Workbook";
+var contactUri = "https://github.com/mattleibow/ICanHazDadJoke.NET";
+```
+
+Now that we have the information that identifies us, we can go ahead and create the `DadJokeClient`:
+
+```csharp
+var client = new DadJokeClient(libraryName, contactUri);
+```
+
+## Fetching Random Dad Jokes
+
+With our new client, we can start talking to the service. The first thing that we may want to do is to get a random dad joke. To do this, all we need to do is invoke the `GetRandomJokeStringAsync` method:
+
+```csharp
+var joke = await client.GetRandomJokeStringAsync();
+```
+
+If we run this, we get a fully-fledged dad joke that we can use around the office!
+
+Even though all your colleagues are objecting to our weak, but funny, dad joke, you notice that they seem to want to hear more. You can, of course, just keep running the `GetRandomJokeStringAsync` method, but there is another way to get a whole big batch in one go! This means we can switch to the more powerful `SearchJokesStringsAsync` method:
+
+```csharp
+var jokes = await client.SearchJokesStringsAsync();
+```
+
+Boom! A massive chunk of dad jokes that you can share will the rest of the folks, and have a few to take home to the wife and kids. *(Now, I know what some of you are thinking: “Hey! I am the wife!“. No problem, you can also be super corny! All you have to do is say they are “mom jokes”! there we go, the world is right again.)*
+
+## Searching for Dad Jokes
+
+If you looked carefully at the `SearchJokesStringsAsync` method, you would notice that it actually takes a few parameters… What could they be? Well, we can easily find out:
+
+* `term` - we can use this to do some searching… we might be looking for food jokes.
+
+* `page` - this is for when there are so many jokes that we have to use pagination just to read them
+
+* `limit` - this is the special option to control how many jokes we get at once… we don’t want to suffer from an dad joke overload
+
+Let’s look a possible scenario. It is the wife’s birthday and she hates dad jokes. So why not crack a few just for her on this special day? When you get home from work, you see she is making the diner *(as she always does because of her big heart)*. You decide to help out by sharing some cool dad jokes. You decide that you need to do about 5 jokes - not too many that she gets upset, but not too few that she doesn’t get over her initial annoyance and start to laugh.
+
+So how do we get 5 food jokes? We use the parameters:
+
+```csharp
+var first = await client.SearchJokesStringsAsync(term: "eat", page: 1, limit: 5);
+```
+
+There! We have 5 more dad jokes! The parameters we provided informed the service that we wanted to recieve the first set of 5 jokes relating to “eat” *(for some reason the search algorithm did not give me anything for “food”)*.
+
+As you start on your joke spree, you notice that some of the jokes are a little dodgy… It appears that you cannot trust people on the internet as you originally thought. So, you decide you need to get 5 more dad jokes. Rest assured, we can just get page 2 of the jokes:
+
+```csharp
+var second = await client.SearchJokesStringsAsync(term: "eat", page: 2, limit: 5);
+```
+
+Yay! 5 more dad jokes for you and the wife to laugh about! *(although they have nothing to do with food, eating or anything you actually searched for)*
+
+## Identifying and Retrieving Dad Jokes
+
+As we reflect on all the dad jokes that we have started sharing with anyone and everyone, you wonder if there was some way to actually share a specific joke with your best buddy *(the wife has heard enough, and she moved you to the couch already)*. Well, there is a way: each dad joke has an ID that you can use to reference it at a later date. You may have noticed that all the methods that we have been using have the word “String” in the name and that there is an overload that doesn’t…
+
+You are a clever one! These overloads get the same dad jokes, but with an ID *(and some other data that we don’t care about)*. Let’s take a look at the random dad joke from the first method we used, but instead of using `GetRandomJokeStringAsync`, we use `GetRandomJokeAsync`:
+
+```csharp
+var joke = await client.GetRandomJokeAsync();
+```
+
+Awesome! We now have more info. As you can see as you inspect the type, there is the *Id* property. We can store this value in a temporary variable somewhere… or share it with the boys at the office:
+
+```csharp
+var jokeId = joke.Id;
+```
+
+Wow! That was pretty anticlimactic, but REST *(see what I did there?)* assured, we are going to use this in a second.
+
+Now that we have a dad joke ID, we can use it later on to get this same dad joke. *(You may be making a LOB app and one of the requirements is a set of dad jokes - sort of that thing that Slack does when you start it up…)* Well, to get this dad joke back because you added it to your favourites and some time has passed, we can just fetch it using the `GetJokeAsync` method:
+
+```csharp
+var oldJoke = await client.GetJokeStringAsync(jokeId);
+```
+
+Will you look at that! The same old dad joke that you added to your favourites! Awesome!
+
+## Submitting New Dad Jokes
+
+Woah! Stop right there! You just heard a brand new dad joke and think for sure this dad joke is not uploaded to the internet. Can you do that? The uploady-thingy? Maybe you need to email some guy, and then open a desk case, wait for that automated response. Then some foreign guy in some foreign country will contact you with a weird accent that you don’t understand. After struggling for hours trying just to submit that dad joke, the internet cuts out and now nobody will ever hear it because you forgot it.
+
+Well, this is not the case. Just like Apple who has an “App For That”, we have a “Method For That”, `SubmitJokeAsync`. Basically, I am better than Apple because you have to write a decent app to get approved, I just let any old dad joke through:
+
+```csharp
+var newJoke = await client.SubmitJokeAsync("My daughter is always upset at me...\n\nShe doesn't like that I squash bugs. \"Daddy, you should let them live!\"");
+```
+
+Boy, was that easy! The world’s greatest dad joke has just been pushed up to the cloud and now not only is the internet a better place, you can feel like you have done something great in your life - like a fireman rescuing a cat stuck in a tree.
+
+## Moving On
+
+You have been reading and sharing dad jokes all day long and you want to now check out some code. Well, you can! This repository has all the code and if you fell that you can do better somewhere, or (this never happens in real life) you discover a bug. Be sure to open an issue or submit a pull request! This awesome library is also available on NuGet for your personal use.
+
+Always remember: The internet is a dodgy place, so be careful. And, don’t be that dodgy guy either!

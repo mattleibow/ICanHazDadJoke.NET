@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/mattleibow/ICanHazDadJoke.NET</PackageProjectUrl>
     <Copyright>Copyright (c) 2017 Matthew Leibowitz</Copyright>
     <Description>A .NET Client for https://icanhazdadjoke.com/ - the internet's largest selection of dad jokes.</Description>
+    <PackageIconUrl>https://cdn.rawgit.com/mattleibow/ICanHazDadJoke.NET/7f5e7d5e4b640d255546ca417f854f4cef5abfc0/images/smile_128.png</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />

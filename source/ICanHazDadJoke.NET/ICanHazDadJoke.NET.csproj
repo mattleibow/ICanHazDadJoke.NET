@@ -1,8 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <DocumentationFile>bin\$(Configuration)\ICanHazDadJoke.NET.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\ICanHazDadJoke.NET.xml</DocumentationFile>
+    <Version>1.0.0</Version>
+    <Authors>mattleibow</Authors>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageTags>jokes, xamarin, netstandard, netcore</PackageTags>
+    <PackageProjectUrl>https://github.com/mattleibow/ICanHazDadJoke.NET</PackageProjectUrl>
+    <Copyright>Copyright (c) 2017 Matthew Leibowitz</Copyright>
+    <Description>A .NET Client for https://icanhazdadjoke.com/</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />

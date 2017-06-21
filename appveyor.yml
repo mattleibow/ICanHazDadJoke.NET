@@ -1,20 +1,19 @@
-version: 1.0.{build}
+version: 1.0.{build}.0
 image: Visual Studio 2017
 configuration: Release
-platform: Any CPU
 
 before_build:
 - appveyor-retry dotnet restore "source\source.sln"
 
 build_script:
-- dotnet build "source\ICanHazDadJoke.NET" -c %CONFIGURATION%
+- dotnet build "source\ICanHazDadJoke.NET" -c %CONFIGURATION% /p:Version=%APPVEYOR_BUILD_VERSION%
 
 after_build:
-- dotnet pack "source\ICanHazDadJoke.NET" -c %CONFIGURATION% --no-build
+- dotnet pack "source\ICanHazDadJoke.NET" -c %CONFIGURATION% /p:Version=%APPVEYOR_BUILD_VERSION% --no-build
 
 test_script:
 - dotnet test "source\ICanHazDadJoke.NET.Tests\ICanHazDadJoke.NET.Tests.csproj" -c %CONFIGURATION%
 
 artifacts:
-- path: source/ICanHazDadJoke.NET/bin/$(configuration)/netstandard1.1/ICanHazDadJoke.NET.dll
-- path: source/ICanHazDadJoke.NET/bin/$(configuration)/ICanHazDadJoke.NET.*.nupkg
+- path: source\ICanHazDadJoke.NET\bin\$(configuration)\netstandard1.1\ICanHazDadJoke.NET.dll
+- path: source\ICanHazDadJoke.NET\bin\$(configuration)\ICanHazDadJoke.NET.*.nupkg

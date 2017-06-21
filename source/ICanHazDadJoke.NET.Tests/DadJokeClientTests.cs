@@ -5,7 +5,7 @@ using Xunit;
 
 namespace ICanHazDadJoke.NET.Tests
 {
-	public class DadJokeApiTests
+	public class DadJokeClientTests
 	{
 		public const string TestingLibraryName = "ICanHazDadJoke.NET.Tests";
 		public const string TestingContactUri = "https://github.com/mattleibow/ICanHazDadJoke.NET";
@@ -17,7 +17,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task GetRandomJokeAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var joke = await api.GetRandomJokeAsync();
 
 			Assert.NotNull(joke);
@@ -29,7 +29,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task GetRandomJokeStringAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var joke = await api.GetRandomJokeStringAsync();
 
 			Assert.NotNull(joke);
@@ -39,7 +39,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task GetJokeAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var joke = await api.GetJokeAsync(TestJokeId);
 
 			Assert.NotNull(joke);
@@ -51,7 +51,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task GetJokeStringAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var joke = await api.GetJokeStringAsync(TestJokeId);
 
 			Assert.NotNull(joke);
@@ -61,7 +61,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task GetJokeImageAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var joke = await api.GetJokeImageAsync(TestJokeId);
 
 			var stream = new MemoryStream();
@@ -74,7 +74,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task SearchJokesAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var results = await api.SearchJokesAsync(TestJokeJoke);
 
 			Assert.NotNull(results);
@@ -94,7 +94,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task SearchJokesStringsAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var results = await api.SearchJokesStringsAsync(TestJokeJoke);
 
 			Assert.NotNull(results);
@@ -105,7 +105,7 @@ namespace ICanHazDadJoke.NET.Tests
 		[Fact]
 		public async Task SubmitJokeAsyncTest()
 		{
-			var api = new DadJokeApi(TestingUserAgent);
+			var api = new DadJokeClient(TestingUserAgent);
 			var response = await api.SubmitJokeAsync(TestJokeJoke);
 
 			Assert.NotNull(response);

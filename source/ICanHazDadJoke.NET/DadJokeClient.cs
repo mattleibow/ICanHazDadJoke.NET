@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 namespace ICanHazDadJoke.NET
 {
 	/// <summary>
-	/// An API for fetching a random joke, a specific joke, or searching for jokes in a variety of formats.
+	/// A client for fetching a random joke, a specific joke, or searching for jokes in a variety of formats.
 	/// </summary>
-	public class DadJokeApi
+	public class DadJokeClient
 	{
 		/// <summary>
 		/// The URL of the service (https://icanhazdadjoke.com/).
@@ -34,7 +34,7 @@ namespace ICanHazDadJoke.NET
 		/// </summary>
 		/// <param name="libraryName">The library name to use on the User-Agent.</param>
 		/// <param name="contactUri">The contact URI to use on the User-Agent.</param>
-		public DadJokeApi(string libraryName, string contactUri)
+		public DadJokeClient(string libraryName, string contactUri)
 		{
 			if (string.IsNullOrWhiteSpace(libraryName))
 				throw new ArgumentException(NoUserAgentMessage, nameof(libraryName));
@@ -48,7 +48,7 @@ namespace ICanHazDadJoke.NET
 		/// Initializes a new instance of the <see cref="T:ICanHazDadJoke.NET.DadJokeApi"/> class.
 		/// </summary>
 		/// <param name="userAgent">The User-Agent string.</param>
-		public DadJokeApi(string userAgent)
+		public DadJokeClient(string userAgent)
 		{
 			if (string.IsNullOrWhiteSpace(userAgent))
 				throw new ArgumentException(NoUserAgentMessage, nameof(userAgent));

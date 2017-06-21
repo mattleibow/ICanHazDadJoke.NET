@@ -9,7 +9,7 @@
     <PackageTags>jokes, xamarin, netstandard, netcore</PackageTags>
     <PackageProjectUrl>https://github.com/mattleibow/ICanHazDadJoke.NET</PackageProjectUrl>
     <Copyright>Copyright (c) 2017 Matthew Leibowitz</Copyright>
-    <Description>A .NET Client for https://icanhazdadjoke.com/</Description>
+    <Description>A .NET Client for https://icanhazdadjoke.com/ - the internet's largest selection of dad jokes.</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />

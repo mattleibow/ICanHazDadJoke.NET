@@ -13,7 +13,7 @@ after_build:
 - dotnet pack "source\ICanHazDadJoke.NET" -c %CONFIGURATION% --no-build
 
 test_script:
-- dotnet test "source\ICanHazDadJoke.NET.Tests" -c %CONFIGURATION%
+- dotnet test "source\ICanHazDadJoke.NET.Tests\ICanHazDadJoke.NET.Tests.csproj" -c %CONFIGURATION%
 
 artifacts:
 - path: source/ICanHazDadJoke.NET/bin/$(configuration)/netstandard1.1/ICanHazDadJoke.NET.dll

@@ -1,13 +1,17 @@
 ---
+uti: com.xamarin.workbook
+id: eb346ad1-4b3e-438c-9689-cb5f41ec6d4e
+title: ICanHazDadJoke.NET
+platforms:
+- Console
 packages:
 - id: ICanHazDadJoke.NET
   version: 1.0.0
-uti: com.xamarin.workbook
-id: eb346ad1-4b3e-438c-9689-cb5f41ec6d4e
-title: simple
-platforms:
-- Console
 ---
+
+```csharp
+#r "ICanHazDadJoke.NET"
+```
 
 # ICanHazDadJoke.NET
 

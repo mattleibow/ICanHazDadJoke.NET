@@ -6,7 +6,7 @@ variables:
   PACKAGE_VERSION: '1.0.$(BUILD_NUMBER)'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -27,7 +27,7 @@ steps:
     packagesToPack: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
     nobuild: true
     versioningScheme: 'off'
-    buildProperties: 'Configuration=Release /p:Version=$(PACKAGE_VERSION)'
+    buildProperties: 'Configuration=Release;Version=$(PACKAGE_VERSION)'
 - task: DotNetCoreCLI@2
   displayName: 'Run tests'
   inputs:

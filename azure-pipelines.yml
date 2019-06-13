@@ -19,13 +19,13 @@ steps:
   inputs:
     command: 'build'
     projects: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
-    arguments: '-c Release /p:Version=$(BUILD_NUMBER)'
+    arguments: '-c Release /p:Version=$(PACKAGE_VERSION)'
 - task: DotNetCoreCLI@2
   displayName: 'Package NuGets'
   inputs:
     command: 'pack'
     projects: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
-    arguments: '-c Release --no-build /p:Version=$(BUILD_NUMBER)'
+    arguments: '-c Release --no-build /p:Version=$(PACKAGE_VERSION)'
 - task: DotNetCoreCLI@2
   displayName: 'Run tests'
   inputs:

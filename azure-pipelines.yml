@@ -27,7 +27,7 @@ steps:
     packagesToPack: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
     nobuild: true
     versioningScheme: 'off'
-    buildProperties: '/p:Configuration=Release /p:Version=$(PACKAGE_VERSION)'
+    buildProperties: 'Configuration=Release /p:Version=$(PACKAGE_VERSION)'
 - task: DotNetCoreCLI@2
   displayName: 'Run tests'
   inputs:

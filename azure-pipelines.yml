@@ -6,7 +6,7 @@ variables:
   PACKAGE_VERSION: '1.0.$(BUILD_NUMBER)'
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: DotNetCoreCLI@2

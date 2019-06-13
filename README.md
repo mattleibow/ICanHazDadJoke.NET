@@ -1,6 +1,6 @@
 # ICanHazDadJoke.NET
 
-[![Build status](https://img.shields.io/appveyor/ci/mattleibow/icanhazdadjoke-net/master.svg)](https://ci.appveyor.com/project/mattleibow/icanhazdadjoke-net)  [![NuGet](https://img.shields.io/nuget/v/ICanHazDadJoke.NET.svg)](https://www.nuget.org/packages/ICanHazDadJoke.NET)
+[![Build Status](https://dev.azure.com/mattleibow/OpenSource/_apis/build/status/ICanHazDadJoke.NET?branchName=master)](https://dev.azure.com/mattleibow/OpenSource/_build/latest?definitionId=14&branchName=master)  [![NuGet](https://img.shields.io/nuget/v/ICanHazDadJoke.NET.svg)](https://www.nuget.org/packages/ICanHazDadJoke.NET)
 
 A .NET Client for [icanhazdadjoke.com](https://icanhazdadjoke.com/), the internet's largest selection of dad jokes.
 

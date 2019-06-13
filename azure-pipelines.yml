@@ -2,7 +2,7 @@ trigger:
 - master
 
 variables:
-  BUILD_NUMBER: $[counter('$(Build.SourceBranchName)_counter', 1)]
+  BUILD_NUMBER: 1.0.$[counter('$(Build.SourceBranchName)_counter', 1)]
 
 pool:
   vmImage: 'ubuntu-latest'

@@ -9,25 +9,30 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: 'Restore packages'
   inputs:
     command: 'restore'
     projects: './source/source.sln'
 - task: DotNetCoreCLI@2
+  displayName: 'Build library'
   inputs:
     command: 'build'
     projects: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
     arguments: '-c Release /p:Version=$(BUILD_NUMBER)'
 - task: DotNetCoreCLI@2
+  displayName: 'Package NuGets'
   inputs:
     command: 'pack'
     projects: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
     arguments: '-c Release --no-build /p:Version=$(BUILD_NUMBER)'
 - task: DotNetCoreCLI@2
+  displayName: 'Run tests'
   inputs:
     command: 'test'
     projects: './source/ICanHazDadJoke.NET.Tests/ICanHazDadJoke.NET.Tests.csproj'
     arguments: '-c Release'
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
   inputs:
     PathtoPublish: './source/ICanHazDadJoke.NET/bin/Release'
     ArtifactName: 'drop'

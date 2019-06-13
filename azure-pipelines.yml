@@ -1,14 +1,33 @@
 trigger:
 - master
 
+variables:
+  BUILD_NUMBER: $[counter('$(Build.SourceBranchName)_counter', 1)]
+
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: './source/source.sln'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
+    arguments: '-c Release /p:Version=$(BUILD_NUMBER)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    projects: './source/ICanHazDadJoke.NET/ICanHazDadJoke.NET.csproj'
+    arguments: '-c Release --no-build /p:Version=$(BUILD_NUMBER)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: './source/ICanHazDadJoke.NET.Tests/ICanHazDadJoke.NET.Tests.csproj'
+    arguments: '-c Release'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: './source/ICanHazDadJoke.NET/bin/Release'
+    ArtifactName: 'drop'

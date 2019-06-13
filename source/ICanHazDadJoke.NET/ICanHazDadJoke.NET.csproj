@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>netstandard1.1;netstandard2.0</TargetFrameworks>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\ICanHazDadJoke.NET.xml</DocumentationFile>
     <Version>1.0.0</Version>
     <Authors>mattleibow</Authors>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageTags>jokes, xamarin, netstandard, netcore</PackageTags>
     <PackageProjectUrl>https://github.com/mattleibow/ICanHazDadJoke.NET</PackageProjectUrl>
-    <Copyright>Copyright (c) 2017 Matthew Leibowitz</Copyright>
+    <Copyright>Copyright (c) 2019 Matthew Leibowitz</Copyright>
     <Description>A .NET Client for https://icanhazdadjoke.com/ - the internet's largest selection of dad jokes.</Description>
-    <PackageIconUrl>https://cdn.rawgit.com/mattleibow/ICanHazDadJoke.NET/7f5e7d5e4b640d255546ca417f854f4cef5abfc0/images/smile_128.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mattleibow/ICanHazDadJoke.NET/master/images/smile_128.png</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />

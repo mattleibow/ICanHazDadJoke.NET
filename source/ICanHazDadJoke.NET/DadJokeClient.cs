@@ -143,7 +143,8 @@ namespace ICanHazDadJoke.NET
 		/// <param name="limit">The search results limit.</param>
 		public async Task<DadJokeSearchResults> SearchJokesAsync(string term = null, int page = 1, int limit = 20)
 		{
-			var uri = string.Format(SearchUrl, Uri.EscapeUriString(term), page, limit);
+			term = string.IsNullOrEmpty(term) ? null : Uri.EscapeUriString(term);
+			var uri = string.Format(SearchUrl, term, page, limit);
 			var response = await jsonHttpClient.GetStringAsync(uri).ConfigureAwait(false);
 			return JsonConvert.DeserializeObject<DadJokeSearchResults>(response);
 		}
@@ -157,6 +158,7 @@ namespace ICanHazDadJoke.NET
 		/// <param name="limit">The search results limit.</param>
 		public async Task<string[]> SearchJokesStringsAsync(string term = null, int page = 1, int limit = 20)
 		{
+			term = string.IsNullOrEmpty(term) ? null : Uri.EscapeUriString(term);
 			var uri = string.Format(SearchUrl, term, page, limit);
 			var response = await textHttpClient.GetStringAsync(uri).ConfigureAwait(false);
 			return response?.Split('\n');

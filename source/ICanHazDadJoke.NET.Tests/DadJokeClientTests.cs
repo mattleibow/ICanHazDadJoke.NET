@@ -92,6 +92,23 @@ namespace ICanHazDadJoke.NET.Tests
 		}
 
 		[Fact]
+		public async Task NullSearchJokesAsyncTest()
+		{
+			var api = new DadJokeClient(TestingUserAgent);
+			var results = await api.SearchJokesAsync();
+
+			Assert.NotNull(results);
+			Assert.Equal(1, results.CurrentPage);
+			Assert.Equal(20, results.Limit);
+			Assert.Equal(2, results.NextPage);
+			Assert.Equal(1, results.PreviousPage);
+			Assert.NotNull(results.Results);
+			Assert.Equal(20, results.Results.Length);
+			Assert.True(results.TotalJokes > 0);
+			Assert.True(results.TotalPages > 0);
+		}
+
+		[Fact]
 		public async Task SearchJokesStringsAsyncTest()
 		{
 			var api = new DadJokeClient(TestingUserAgent);
